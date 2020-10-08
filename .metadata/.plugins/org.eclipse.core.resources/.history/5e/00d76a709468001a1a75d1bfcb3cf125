@@ -1,0 +1,152 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+
+public class muvekkildavaliekle extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtTC;
+	private JTextField txtadi;
+	private JTextField textField_5;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					muvekkildavaliekle frame = new muvekkildavaliekle();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public muvekkildavaliekle() {
+		setTitle("Muvekkil Davali Ekle / Duzenle");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 538, 432);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setOpaque(true);
+		Image img = new ImageIcon(this.getClass().getResource("/Jury-Law-icon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBounds(10, 51, 162, 334);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Muvekkil Davali Ekle / Duzenle");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_1.setBounds(10, 11, 456, 29);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("TC No:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(182, 50, 55, 22);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Ad\u0131 Soyad\u0131:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(182, 80, 79, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_7 = new JLabel("Telefon:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_7.setBounds(182, 110, 79, 22);
+		contentPane.add(lblNewLabel_7);
+		
+		txtTC = new JTextField();
+		txtTC.setBounds(287, 50, 144, 20);
+		contentPane.add(txtTC);
+		txtTC.setColumns(10);
+		
+		txtadi = new JTextField();
+		txtadi.setBounds(287, 80, 144, 20);
+		contentPane.add(txtadi);
+		txtadi.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(287, 110, 144, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("Vazge\u00E7");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_2.setBounds(292, 355, 100, 30);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Kaydet");
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_3.setBounds(182, 355, 100, 30);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Adres");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(182, 140, 55, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(287, 140, 144, 47);
+		contentPane.add(textArea);
+		
+		JLabel lblNewLabel_5 = new JLabel("Daval\u0131 Vekili:");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_5.setBounds(182, 200, 79, 14);
+		contentPane.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("M\u00FCvekkil TC:");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_6.setBounds(182, 230, 89, 14);
+		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_8 = new JLabel("A\u00E7\u0131klama:");
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_8.setBounds(182, 260, 79, 14);
+		contentPane.add(lblNewLabel_8);
+		
+		textField = new JTextField();
+		textField.setBounds(287, 200, 144, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setEnabled(false);
+		textField_1.setBounds(287, 230, 144, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBounds(287, 260, 144, 47);
+		contentPane.add(textArea_1);
+	}
+}

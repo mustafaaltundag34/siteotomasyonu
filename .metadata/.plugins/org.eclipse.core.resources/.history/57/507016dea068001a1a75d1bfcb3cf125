@@ -1,0 +1,175 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTree;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+
+public class kullanicikayit extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table1;
+	
+//1- JFRAME AC 2- SCROOL PANE CIZ 3- JTABLE CIZ 4- DEFAULTTABLEMODEL TANIMLA 5- KOLON VE SATIRLARI TANIMLA
+	
+	DefaultTableModel modelim = new DefaultTableModel();//TABLO MODELINI TANIMLIYORUZ
+	
+	Object [] kolonlar = {"Kullanici Adi","Aciklama","Yetkisi"}; //KOLON TANIMLAMA
+	Object [] satirlar = new Object[3]; //SATIR TANIMLAMA
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					kullanicikayit frame = new kullanicikayit();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public kullanicikayit() {
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setType(Type.POPUP);
+		setAlwaysOnTop(true);
+		addWindowListener(new WindowAdapter() {
+			public void windowOpened(WindowEvent e) {
+				System.out.println("Pencere Acildi");
+			}
+			public void windowClosing(WindowEvent e) {
+				System.out.println("Pencere kapandi");
+			}
+			@Override
+			public void windowActivated(WindowEvent e) {
+				
+				modelim.setRowCount(0);//TABLOYU TEMIZLIYOR
+				ResultSet rs1=baglanti.kullanicilistele(); //BAGLANTI CLASINDAN KULLANICILISTELE CALISIYOR
+				try {
+				while(rs1.next()) {
+					satirlar[0]=rs1.getString("kadi");
+					satirlar[1]=rs1.getString("kaciklama");
+					satirlar[2]=rs1.getString("yetki");
+					modelim.addRow(satirlar);
+				}		
+				}catch(SQLException hata)
+				{
+					System.err.println(hata);
+					}
+				table1.setModel(modelim);
+				table1.updateUI();
+				
+			}
+		});
+		setTitle("6-) Kullanici Kayitlari Ekrani");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 799, 429);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(270, 52, 505, 285);
+		contentPane.add(scrollPane);
+		
+		table1 = new JTable();
+		modelim.setColumnIdentifiers(kolonlar);
+		table1.setBounds(110, 112, 565, 197);
+		
+		scrollPane.setViewportView(table1);
+		
+		JButton btnNewButton = new JButton("Listele");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			modelim.setRowCount(0);//TABLOYU TEMIZLIYOR
+				ResultSet rs1=baglanti.kullanicilistele(); //BAGLANTI CLASINDAN KULLANICILISTELE CALISIYOR
+				try {
+				while(rs1.next()) {
+					satirlar[0]=rs1.getString("kadi");
+					satirlar[1]=rs1.getString("kaciklama");
+					satirlar[2]=rs1.getString("yetki");
+					modelim.addRow(satirlar);
+				}		
+				}catch(SQLException hata)
+				{
+					System.err.println(hata);
+					}
+				table1.setModel(modelim);
+
+			}
+		});
+		btnNewButton.setBounds(270, 348, 100, 30);
+		contentPane.add(btnNewButton);
+		
+		JButton btnYeniKayit = new JButton("Yeni Kayit");
+		btnYeniKayit.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnYeniKayit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				kullanicikayitdetay frame = new kullanicikayitdetay();
+				frame.show();
+				frame.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+			}
+		});
+		btnYeniKayit.setBounds(388, 348, 100, 30);
+		contentPane.add(btnYeniKayit);
+		
+		JButton btnKapat = new JButton("Kapat");
+		btnKapat.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnKapat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnKapat.setBounds(506, 348, 100, 30);
+		contentPane.add(btnKapat);
+	
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		Image img = new ImageIcon(this.getClass().getResource("/User-Group-icon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBounds(10, 52, 250, 285);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblKullaniciListesi = new JLabel("6-) Kullanici Kayitlari Ekrani");
+		lblKullaniciListesi.setHorizontalAlignment(SwingConstants.LEFT);
+		lblKullaniciListesi.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblKullaniciListesi.setBounds(10, 11, 392, 26);
+		contentPane.add(lblKullaniciListesi);
+	}
+}

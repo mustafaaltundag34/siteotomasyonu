@@ -1,0 +1,126 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class personelanaekrani extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtisim;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					personelanaekrani frame = new personelanaekrani();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public personelanaekrani() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setTitle("2-) Personel Ana Ekrani");
+		setBounds(100, 100, 929, 411);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(240, 240,240));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JList list = new JList();
+		list.setBounds(260, 48, 643, 236);
+		contentPane.add(list);
+		
+		JLabel lblmuvekkil = new JLabel("");
+		lblmuvekkil.setOpaque(true);
+		lblmuvekkil.setBackground(Color.WHITE);
+		Image  img=new ImageIcon(this.getClass().getResource("/Groups-Meeting-Dark-icon.png")).getImage();
+		lblmuvekkil.setIcon(new ImageIcon(img));
+		lblmuvekkil.setBounds(10, 48, 240, 312);
+		contentPane.add(lblmuvekkil);
+		
+		JLabel lblmuvekkilislemleri = new JLabel("2-) Personel Ana Ekrani");
+		lblmuvekkilislemleri.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblmuvekkilislemleri.setBounds(10, 11, 306, 26);
+		contentPane.add(lblmuvekkilislemleri);
+		
+		JButton btnvazgec = new JButton("Kapat");
+		btnvazgec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnvazgec.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnvazgec.setBounds(803, 332, 100, 30);
+		contentPane.add(btnvazgec);
+		
+		JButton btnekle = new JButton("Ekle");
+		btnekle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				personelekleduzenle frame = new personelekleduzenle();
+				frame.show();
+				frame.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR				
+
+			}
+		});
+		btnekle.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnekle.setBounds(260, 332, 100, 30);
+		contentPane.add(btnekle);
+		
+		JButton btnsil = new JButton("Sil");
+		btnsil.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnsil.setBounds(480, 332, 100, 30);
+		contentPane.add(btnsil);
+		
+		JButton btnduzenle = new JButton("Duzenle");
+		btnduzenle.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnduzenle.setBounds(370, 332, 100, 30);
+		contentPane.add(btnduzenle);
+		
+		txtisim = new JTextField();
+		txtisim.setBounds(260, 298, 533, 30);
+		contentPane.add(txtisim);
+		txtisim.setColumns(10);
+		
+		JButton btnara = new JButton("Ara");
+		btnara.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnara.setBounds(803, 298, 100, 30);
+		contentPane.add(btnara);
+		
+		JButton btnRapor = new JButton("Rapor");
+		btnRapor.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnRapor.setBounds(590, 332, 100, 30);
+		contentPane.add(btnRapor);
+		
+		JButton btnYardim = new JButton("Yardim");
+		btnYardim.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnYardim.setBounds(700, 332, 100, 30);
+		contentPane.add(btnYardim);
+	}
+}
+

@@ -1,0 +1,132 @@
+package hukukcmftasarim;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+
+public class muvekkilozelhareketekle extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtTC;
+	private JTextField txtadi;
+	private JTextField textField_5;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					muvekkilozelhareketekle frame = new muvekkilozelhareketekle();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public muvekkilozelhareketekle() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 754, 429);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(new Color(255, 153, 0));
+		lblNewLabel.setOpaque(true);
+		Image img = new ImageIcon(this.getClass().getResource("/Groups-Meeting-Dark-icon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBounds(0, 0, 270, 467);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("M\u00DCVEKK\u0130L G\u00D6R\u00DC\u015EME EKLE/D\u00DCZENLE");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_1.setBounds(316, 26, 356, 29);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("G\u00F6r\u00FC\u015Fme Tarihi:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(331, 93, 95, 22);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("M\u00FCvekkil Ad\u0131:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(331, 136, 95, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_7 = new JLabel("Avukat Ad\u0131:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_7.setBounds(331, 210, 79, 22);
+		contentPane.add(lblNewLabel_7);
+		
+		txtTC = new JTextField();
+		txtTC.setBounds(436, 98, 144, 20);
+		contentPane.add(txtTC);
+		txtTC.setColumns(10);
+		
+		txtadi = new JTextField();
+		txtadi.setBounds(436, 134, 144, 20);
+		contentPane.add(txtadi);
+		txtadi.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(436, 212, 144, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("D\u00FCzenle");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_1.setBounds(448, 336, 89, 29);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Vazge\u00E7");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_2.setBounds(559, 336, 89, 29);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Ekle");
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_3.setBounds(331, 336, 89, 29);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Notlar:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(331, 256, 55, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(436, 257, 144, 47);
+		contentPane.add(textArea);
+		
+		JLabel lblNewLabel_6 = new JLabel("M\u00FCvekkil TC:");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_6.setBounds(331, 174, 89, 14);
+		contentPane.add(lblNewLabel_6);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(436, 172, 144, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+	}
+}

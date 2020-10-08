@@ -1,0 +1,158 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Choice;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+public class kullanicikayitdetay extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtkadi;
+	private JPasswordField txtsifresi;
+	private JTextField txtkaciklama;
+	private JComboBox txtyetki;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					kullanicikayitdetay frame = new kullanicikayitdetay();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public kullanicikayitdetay() {
+		setAlwaysOnTop(true);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setType(Type.POPUP);
+		setResizable(false);
+		setTitle("Kullanici Kayit Detay Ekrani");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 617, 370);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Kaydet");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//INSERT INTO kullanicibilgi (kadi,sifresi,kaciklama,yetki) VALUES ('6','6','HASAN','AVUKAT');
+				String kadi,sifresi,kaciklama,yetki,sorgukullanicikayit;
+				kadi=txtkadi.getText();
+				sifresi=txtsifresi.getText();
+				kaciklama=txtkaciklama.getText();
+				yetki=txtyetki.getSelectedItem().toString();
+				sorgukullanicikayit="INSERT INTO kullanicibilgi (kadi,sifresi,kaciklama,yetki) VALUES ("+
+				"'"+kadi+"',"+"'"+ sifresi +"'," +"'"+ kaciklama+"',"+"'"+ yetki+"')";
+				System.out.println(sorgukullanicikayit);	
+				baglanti.kullaniciekle(sorgukullanicikayit);
+			    dispose();//FORM KAPAMA
+
+			}
+		});
+		btnNewButton.setBounds(349, 250, 89, 23);
+		contentPane.add(btnNewButton);
+		
+
+		
+		
+		
+		txtkadi = new JTextField();
+		txtkadi.setBounds(450, 100, 140, 20);
+		contentPane.add(txtkadi);
+		txtkadi.setColumns(30);
+		
+		txtsifresi = new JPasswordField();
+		txtsifresi.setBounds(450, 133, 140, 20);
+		contentPane.add(txtsifresi);
+		
+		txtyetki = new JComboBox();
+		txtyetki.setModel(new DefaultComboBoxModel(new String[] {"AVUKAT", "YONETICI", "SEKRETER"}));
+		txtyetki.setSelectedIndex(0);
+		txtyetki.setBounds(450, 199, 140, 22);
+		contentPane.add(txtyetki);
+		
+		txtkaciklama = new JTextField();
+		txtkaciklama.setColumns(30);
+		txtkaciklama.setBounds(450, 166, 140, 20);
+		contentPane.add(txtkaciklama);
+		
+		JButton btnKapat = new JButton("Kapat");
+		btnKapat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				dispose();//FORM KAPAMA
+			}
+		});
+		btnKapat.setBounds(448, 250, 89, 23);
+		contentPane.add(btnKapat);
+		
+		JLabel lblNewLabel = new JLabel("");
+		Image img = new ImageIcon(this.getClass().getResource("/User-Group-icon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBounds(0, 0, 266, 343);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_3 = new JLabel("\u015Eifre:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(299, 135, 82, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Yetki:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(299, 202, 46, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_2 = new JLabel("Kullan\u0131c\u0131 Ad\u0131:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(299, 98, 98, 23);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("A\u00E7\u0131klama:");
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4_1.setBounds(299, 168, 105, 14);
+		contentPane.add(lblNewLabel_4_1);
+		
+		JLabel lblKullaniciKayitEkrani = new JLabel("Kullanici Kayit Ekrani");
+		lblKullaniciKayitEkrani.setHorizontalAlignment(SwingConstants.CENTER);
+		lblKullaniciKayitEkrani.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblKullaniciKayitEkrani.setBounds(279, 29, 305, 26);
+		contentPane.add(lblKullaniciKayitEkrani);
+	}
+}

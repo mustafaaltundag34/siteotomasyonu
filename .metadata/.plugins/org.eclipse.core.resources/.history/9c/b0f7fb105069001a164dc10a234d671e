@@ -1,0 +1,184 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+
+public class logkayitlari extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+	static Connection myconn1;
+	static Statement mystat1;
+	
+	DefaultTableModel modelim = new DefaultTableModel();//TABLO MODELINI TANIMLIYORUZ
+	
+	Object [] kolonlar = {"logkullaniciadi","logkullaniciyetkisi","logdatetime","logsunucuparametre"}; //KOLON TANIMLAMA
+	Object [] satirlar = new Object[4]; //SATIR TANIMLAMA
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					logkayitlari frame = new logkayitlari();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public logkayitlari() {
+		setResizable(false);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowActivated(WindowEvent e) {
+				//LOG LISTELEME
+				modelim.setRowCount(0);//TABLOYU TEMIZLIYOR
+				//
+		 		ResultSet rs1 = null;
+				try {
+					myconn1=DriverManager.getConnection ("jdbc:mysql://localhost:3306/hukukburosu?useTimezone=true&serverTimezone=UTC","root","");
+					System.out.println("Baðlantý Saðlandý");
+
+					String query1="Select * From hukukburosulog";
+					mystat1=myconn1.createStatement();
+					rs1=mystat1.executeQuery(query1);
+					System.out.println("Listeleme Basarili");
+				}catch(Exception hata)
+				{
+				System.err.println(hata);
+				}
+				//
+				
+				try {
+				while(rs1.next()) {
+					satirlar[0]=rs1.getString("logkullaniciadi");
+					satirlar[1]=rs1.getString("logkullaniciyetkisi");
+					satirlar[2]=rs1.getString("logdatetime");
+					satirlar[3]=rs1.getString("logsunucuparametre");
+					modelim.addRow(satirlar);
+				}		
+				}catch(SQLException hata)
+				{
+					System.err.println(hata);
+					}
+				table.setModel(modelim);
+				table.updateUI();
+				//LOG LISTELEME
+			}
+		});
+		setTitle("Log Kayitlari");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 734, 416);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(159, 11, 559, 300);
+		contentPane.add(scrollPane);
+		
+		//LISTELEME
+		table = new JTable();
+		modelim.setColumnIdentifiers(kolonlar);
+		table.setBounds(110,112,565,197);
+		scrollPane.setViewportView(table);
+		//LISTELEME
+		
+		JButton btnNewButton = new JButton("Kapat");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(189, 334, 169, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Yenile");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//LOG LISTELEME
+				
+				modelim.setRowCount(0);//TABLOYU TEMIZLIYOR
+				//
+		 		ResultSet rs1 = null;
+				try {
+					myconn1=DriverManager.getConnection ("jdbc:mysql://localhost:3306/hukukburosu?useTimezone=true&serverTimezone=UTC","root","");
+					System.out.println("Baðlantý Saðlandý");
+
+					String query1="Select * From hukukburosulog";
+					mystat1=myconn1.createStatement();
+					rs1=mystat1.executeQuery(query1);
+					System.out.println("Listeleme Basarili");
+				}catch(Exception hata)
+				{
+				System.err.println(hata);
+				}
+				//
+				
+				try {
+				while(rs1.next()) {
+					satirlar[0]=rs1.getString("logkullaniciadi");
+					satirlar[1]=rs1.getString("logkullaniciyetkisi");
+					satirlar[2]=rs1.getString("logdatetime");
+					satirlar[3]=rs1.getString("logsunucuparametre");
+					modelim.addRow(satirlar);
+				}		
+				}catch(SQLException hata)
+				{
+					System.err.println(hata);
+					}
+				table.setModel(modelim);
+				table.updateUI();
+				//LOG LISTELEME
+				
+			}
+		});
+		btnNewButton_1.setBounds(10, 334, 169, 23);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblmuvekkil = new JLabel("");
+		lblmuvekkil.setHorizontalAlignment(SwingConstants.CENTER);
+		lblmuvekkil.setOpaque(true);
+		lblmuvekkil.setBackground(Color.WHITE);
+		Image  img=new ImageIcon(this.getClass().getResource("/Jury-Law-icon.png")).getImage();
+		lblmuvekkil.setIcon(new ImageIcon(img));
+		lblmuvekkil.setBounds(10, 12, 143, 299);
+		contentPane.add(lblmuvekkil);
+		
+
+	}
+}

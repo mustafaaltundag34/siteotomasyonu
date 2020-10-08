@@ -1,0 +1,115 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class sifremiunuttum extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					sifremiunuttum frame = new sifremiunuttum();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public sifremiunuttum() {
+		setResizable(false);
+		setTitle("Sifre Hatirlatma Ekrani");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 578, 338);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblmuvekkil = new JLabel("");
+		lblmuvekkil.setHorizontalAlignment(SwingConstants.CENTER);
+		lblmuvekkil.setOpaque(true);
+		lblmuvekkil.setBackground(Color.WHITE);
+		Image  img=new ImageIcon(this.getClass().getResource("/office-women-pink-icon (1).png")).getImage();
+		lblmuvekkil.setIcon(new ImageIcon(img));
+		lblmuvekkil.setBounds(10, 45, 156, 232);
+		contentPane.add(lblmuvekkil);
+		
+		JLabel lblSifremiUnuttum = new JLabel("Sifre Hatirlatma Ekrani");
+		lblSifremiUnuttum.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblSifremiUnuttum.setBounds(10, 11, 306, 26);
+		contentPane.add(lblSifremiUnuttum);
+		
+		textField = new JTextField();
+		textField.setBounds(297, 45, 244, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(297, 163, 242, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(297, 194, 242, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Kullanici Adiniz :");
+		lblNewLabel.setBounds(176, 45, 117, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblGizliSorunuz = new JLabel("Gizli Sorunuz :");
+		lblGizliSorunuz.setBounds(176, 163, 111, 14);
+		contentPane.add(lblGizliSorunuz);
+		
+		JLabel lblCevabiniz = new JLabel("Cevabiniz :");
+		lblCevabiniz.setBounds(176, 194, 111, 14);
+		contentPane.add(lblCevabiniz);
+		
+		JButton btnNewButton = new JButton("Gizli Soruyu Bul");
+		btnNewButton.setBounds(176, 104, 365, 23);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblSifreniz = new JLabel("Sifreniz :");
+		lblSifreniz.setBounds(176, 257, 111, 14);
+		contentPane.add(lblSifreniz);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(297, 257, 242, 20);
+		contentPane.add(textField_3);
+		
+		JButton btnSifremiGetir = new JButton("Sifremi Getir");
+		btnSifremiGetir.setBounds(176, 223, 365, 23);
+		contentPane.add(btnSifremiGetir);
+		
+
+	}
+}

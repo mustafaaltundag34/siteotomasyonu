@@ -1,0 +1,201 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.*;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
+import javax.swing.JList;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
+import javax.swing.AbstractListModel;
+import javax.swing.border.BevelBorder;
+import java.awt.List;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.*;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
+import java.awt.Label;
+import javax.swing.SwingConstants;
+import javax.swing.JMenu;
+import javax.swing.JOptionPane;
+
+public class AnaMenu extends JFrame {
+
+	public JPanel contentPane;
+	private JButton Muvekkilbuton;
+	private JButton Avukatkayit;
+	private JButton btnNewButton;
+	private JButton btnKullancKayt;
+	private JButton btnMuvekkilHukuki;
+	private JButton btnMuvekkilDavaliKayit;
+	private JButton btnAyarlar;
+	private JButton btnNewButton_3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AnaMenu frame = new AnaMenu();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AnaMenu() {
+		setTitle("Hukuk Burosu Otomasyonu v 1.0 - Ana Menu");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 989, 632);
+		setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		
+		Muvekkilbuton = new JButton("Muvekkil Ana Ekrani");
+		Muvekkilbuton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List list = new List();
+				list.add("program acildi2");
+			}
+		});
+		Muvekkilbuton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Muvekkilbuton.setBounds(10, 11, 290, 100);
+		contentPane.add(Muvekkilbuton);
+		
+		Avukatkayit = new JButton("Avukat Ana Ekrani");
+		Avukatkayit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		Avukatkayit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Avukatkayit.setBounds(347, 11, 290, 100);
+		contentPane.add(Avukatkayit);
+		
+		List list = new List();
+		list.setBounds(10, 465, 949, 47);
+		contentPane.add(list);
+
+		
+		btnNewButton = new JButton("Personel Ana Ekrani");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton.setBounds(10, 122, 290, 100);
+		contentPane.add(btnNewButton);
+		
+		btnKullancKayt = new JButton("Kullanici Ana Ekrani");
+		btnKullancKayt.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				kullanicikayit frame = new kullanicikayit();
+				frame.show();
+				frame.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+				
+			}
+		});
+		btnKullancKayt.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnKullancKayt.setBounds(347, 122, 290, 100);
+		contentPane.add(btnKullancKayt);
+		
+		btnAyarlar = new JButton("Yardim Ana Ekrani ?");
+		btnAyarlar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnAyarlar.setBounds(10, 348, 290, 100);
+		contentPane.add(btnAyarlar);
+		
+		btnNewButton_3 = new JButton("CIKIS");
+		btnNewButton_3.setBackground(UIManager.getColor("Menu.selectionBackground"));
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedOption = JOptionPane.showConfirmDialog(null,"Çýkýþ yapmak istiyor musunuz?","ÇIKIÞ",JOptionPane.YES_NO_OPTION); 
+				if (selectedOption == JOptionPane.YES_OPTION)
+				{
+					System.exit(0);
+				}
+			}
+		});
+		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_3.setBounds(347, 348, 290, 100);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel label1 = new JLabel("Kullanici Adi :");
+		label1.setForeground(Color.BLUE);
+		label1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		label1.setBounds(10, 518, 200, 37);
+		contentPane.add(label1);
+		
+		JLabel label2 = new JLabel();
+		label2.setForeground(Color.BLUE);
+		label2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		label2.setBounds(220, 518, 200, 37);
+		contentPane.add(label2);
+		
+		btnMuvekkilHukuki = new JButton("Buro Bilgi Ana Ekrani");
+		btnMuvekkilHukuki.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnMuvekkilHukuki.setBounds(10, 233, 290, 100);
+		contentPane.add(btnMuvekkilHukuki);
+		if(baglanti.yetki.equals("YONETICI"))
+		{
+			JButton btnPersonelKayit = new JButton("Personel Kayit");
+			btnPersonelKayit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btnPersonelKayit.setBounds(669, 11, 290, 70);
+			contentPane.add(btnPersonelKayit);
+		}
+		else
+		{
+			JButton btnPersonelKayit = new JButton("Personel Kayit");
+			btnPersonelKayit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btnPersonelKayit.setBounds(669, 11, 290, 70);
+			contentPane.add(btnPersonelKayit);
+			btnPersonelKayit.setEnabled(false);
+		}
+		
+		btnMuvekkilDavaliKayit = new JButton("Log Ana Ekrani ???");
+		btnMuvekkilDavaliKayit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnMuvekkilDavaliKayit.setBounds(347, 233, 290, 100);
+		contentPane.add(btnMuvekkilDavaliKayit);
+		
+		JLabel label3 = new JLabel();
+		label3.setForeground(Color.BLUE);
+		label3.setFont(new Font("Tahoma", Font.BOLD, 16));
+		label3.setBounds(669, 518, 290, 37);
+		contentPane.add(label3);
+		
+		JLabel label4 = new JLabel("Yetki :");
+		label4.setForeground(Color.BLUE);
+		label4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		label4.setBounds(669,518,290, 37);
+		contentPane.add(label4);
+		
+		JLabel lblHukukBurosuV = new JLabel("Hukuk Burosu version Son Guncelleme 06.03.2020");
+		lblHukukBurosuV.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblHukukBurosuV.setForeground(Color.BLACK);
+		lblHukukBurosuV.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblHukukBurosuV.setBounds(10, 879, 956, 215);
+		contentPane.add(lblHukukBurosuV);
+		Date tarih = new Date();
+		list.add("Sistem Mesajlari : Programa Giris Yaptildi... " + tarih);
+
+
+	}
+}

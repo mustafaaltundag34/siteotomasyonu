@@ -1,0 +1,216 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import java.awt.Choice;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+public class kullanicikayitdetay extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtkadi;
+	private JPasswordField txtsifresi;
+	private JTextField txtkaciklama;
+	private JComboBox txtyetki;
+	private JTextField txtsoru;
+	private JTextField txtcevap;
+	
+	static Connection myconn1;
+	static Statement mystat1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					kullanicikayitdetay frame = new kullanicikayitdetay();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public kullanicikayitdetay() {
+		setAlwaysOnTop(true);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setType(Type.POPUP);
+		setResizable(false);
+		setTitle("Kullanici Kayit Ekrani");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 591, 336);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Kaydet");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//INSERT INTO kullanicibilgi (kadi,sifresi,kaciklama,yetki) VALUES ('6','6','HASAN','AVUKAT');
+				String kadi,sifresi,kaciklama,yetki,sorgukullanicikayit,sifrehatirlatmasoru,sifrehatirlatmacevap;
+				kadi=txtkadi.getText();
+				sifresi="AES_ENCRYPT("+txtsifresi.getText()+",'abc1234')";
+				kaciklama=txtkaciklama.getText();
+				yetki=txtyetki.getSelectedItem().toString();
+				sifrehatirlatmasoru=txtsoru.getText();
+				sifrehatirlatmacevap=txtcevap.getText();
+				sorgukullanicikayit="INSERT INTO kullanicibilgi (kadi,sifresi,kaciklama,yetki,sifrehatirlatmasoru,sifrehatirlatmacevap) VALUES ("+
+				"'"+kadi+"',"+"'"+ sifresi +"'," +"'"+ kaciklama+"',"+"'"+ yetki+"'," +"'"+ sifrehatirlatmasoru+"'," +"'"+ sifrehatirlatmacevap+"')";
+
+				//SIFRELERI GIZLEYEREK SAKLAMA KODU
+			
+				//SIFRELERI GIZLEYEREK SAKLAMA KODU
+				
+				System.out.println(sorgukullanicikayit);	
+				
+				//
+				try {
+					
+					myconn1=DriverManager.getConnection ("jdbc:mysql://localhost:3306/hukukburosu?useTimezone=true&serverTimezone=UTC","root","");
+					System.out.println("Baðlantý Saðlandý");
+				}catch(Exception hata)
+				{
+				System.err.println(hata);
+				}
+				
+				try {
+					mystat1=myconn1.createStatement();
+					mystat1.executeUpdate(sorgukullanicikayit);
+					System.out.println("Ekleme Basarili");
+					}catch(Exception hata)
+					{
+					System.err.println(hata);
+					}
+				//
+				
+				
+			    dispose();//FORM KAPAMA
+
+			}
+		});
+		btnNewButton.setBounds(276, 261, 100, 30);
+		contentPane.add(btnNewButton);
+		
+
+		
+		
+		
+		txtkadi = new JTextField();
+		txtkadi.setBounds(427, 50, 140, 20);
+		contentPane.add(txtkadi);
+		txtkadi.setColumns(30);
+		
+		txtsifresi = new JPasswordField();
+		txtsifresi.setBounds(427, 80, 140, 20);
+		contentPane.add(txtsifresi);
+		
+		txtyetki = new JComboBox();
+		txtyetki.setModel(new DefaultComboBoxModel(new String[] {"AVUKAT", "YONETICI", "SEKRETER"}));
+		txtyetki.setSelectedIndex(0);
+		txtyetki.setBounds(427, 140, 140, 22);
+		contentPane.add(txtyetki);
+		
+		txtkaciklama = new JTextField();
+		txtkaciklama.setColumns(30);
+		txtkaciklama.setBounds(427, 110, 140, 20);
+		contentPane.add(txtkaciklama);
+		
+		JButton btnKapat = new JButton("Vazgec");
+		btnKapat.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnKapat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				dispose();//FORM KAPAMA
+			}
+		});
+		btnKapat.setBounds(391, 261, 100, 30);
+		contentPane.add(btnKapat);
+		
+		JLabel lblNewLabel = new JLabel("");
+		Image img = new ImageIcon(this.getClass().getResource("/User-Group-icon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBounds(10, 48, 256, 243);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_3 = new JLabel("\u015Eifre:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(276, 80, 82, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Yetki:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(276, 140, 46, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_2 = new JLabel("Kullan\u0131c\u0131 Ad\u0131:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(276, 50, 98, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("A\u00E7\u0131klama:");
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4_1.setBounds(276, 110, 105, 14);
+		contentPane.add(lblNewLabel_4_1);
+		
+		JLabel lblKullaniciKayitEkrani = new JLabel("Kullanici Kayit Ekrani");
+		lblKullaniciKayitEkrani.setHorizontalAlignment(SwingConstants.LEFT);
+		lblKullaniciKayitEkrani.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblKullaniciKayitEkrani.setBounds(10, 11, 305, 26);
+		contentPane.add(lblKullaniciKayitEkrani);
+		
+		JLabel lblNewLabel_4_2 = new JLabel("Hatirlatma Sorusu :");
+		lblNewLabel_4_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4_2.setBounds(276, 170, 129, 14);
+		contentPane.add(lblNewLabel_4_2);
+		
+		JLabel lblNewLabel_4_2_1 = new JLabel("Hatirlatma Cevabi :");
+		lblNewLabel_4_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4_2_1.setBounds(276, 200, 129, 14);
+		contentPane.add(lblNewLabel_4_2_1);
+		
+		txtsoru = new JTextField();
+		txtsoru.setColumns(30);
+		txtsoru.setBounds(427, 170, 140, 20);
+		contentPane.add(txtsoru);
+		
+		txtcevap = new JTextField();
+		txtcevap.setColumns(30);
+		txtcevap.setBounds(427, 200, 140, 20);
+		contentPane.add(txtcevap);
+	}
+}

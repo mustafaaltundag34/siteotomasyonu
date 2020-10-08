@@ -1,0 +1,128 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+
+public class avukatkayitanamenu extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtisim;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					avukatkayitanamenu frame = new avukatkayitanamenu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public avukatkayitanamenu() {
+		setTitle("5-) Avukat Kayit Bilgi Ekrani");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 895, 392);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(240, 240, 240));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JList list = new JList();
+		list.setBounds(176, 48, 663, 222);
+		contentPane.add(list);
+		
+		JLabel lblmuvekkil = new JLabel("");
+		lblmuvekkil.setOpaque(true);
+		lblmuvekkil.setBackground(Color.WHITE);
+		Image  img=new ImageIcon(this.getClass().getResource("/Law-icon.png")).getImage();
+		lblmuvekkil.setIcon(new ImageIcon(img));
+		lblmuvekkil.setBounds(10, 48, 156, 296);
+		contentPane.add(lblmuvekkil);
+		
+		JLabel lblmuvekkilislemleri = new JLabel("5-) Avukat Kayit Bilgi Ekrani");
+		lblmuvekkilislemleri.setHorizontalAlignment(SwingConstants.LEFT);
+		lblmuvekkilislemleri.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblmuvekkilislemleri.setBounds(10, 11, 291, 26);
+		contentPane.add(lblmuvekkilislemleri);
+		
+		JButton btnvazgec = new JButton("Kapat");
+		btnvazgec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnvazgec.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnvazgec.setBounds(739, 317, 100, 30);
+		contentPane.add(btnvazgec);
+		
+		JButton btnekle = new JButton("Ekle");
+		btnekle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				avukatekleduzenle frame = new avukatekleduzenle();
+				frame.show();
+				frame.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+			}
+		});
+		btnekle.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnekle.setBounds(176, 314, 100, 30);
+		contentPane.add(btnekle);
+		
+		JButton btnsil = new JButton("Sil");
+		btnsil.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnsil.setBounds(404, 314, 100, 30);
+		contentPane.add(btnsil);
+		
+		JButton btnduzenle = new JButton("Duzenle");
+		btnduzenle.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnduzenle.setBounds(290, 314, 100, 30);
+		contentPane.add(btnduzenle);
+		
+		txtisim = new JTextField();
+		txtisim.setBounds(176, 278, 544, 30);
+		contentPane.add(txtisim);
+		txtisim.setColumns(10);
+		
+		JButton btnara = new JButton("Ara");
+		btnara.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnara.setBounds(739, 281, 100, 30);
+		contentPane.add(btnara);
+		
+		JButton btnRapor = new JButton("Rapor");
+		btnRapor.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnRapor.setBounds(514, 314, 100, 30);
+		contentPane.add(btnRapor);
+		
+		JButton btnDokuman = new JButton("Yardim");
+		btnDokuman.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnDokuman.setBounds(624, 314, 100, 30);
+		contentPane.add(btnDokuman);
+	}
+}
+
+

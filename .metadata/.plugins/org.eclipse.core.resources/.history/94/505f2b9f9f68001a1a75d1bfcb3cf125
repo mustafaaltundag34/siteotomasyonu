@@ -1,0 +1,210 @@
+package test;
+
+import javax.swing.*; 
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+
+import java.util.Date;
+import java.util.Scanner;
+import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import com.mysql.*;
+import com.mysql.cj.jdbc.Driver;
+
+ 
+
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Window.Type;
+
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+
+
+public class LoginForm {
+
+	private JFrame frmLoginForm;
+	private JTextField textField1;
+	private JTextField textField2;
+	private JPasswordField passwordField;
+	private JTextField databasetext;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginForm window = new LoginForm();
+					window.frmLoginForm.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public LoginForm() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmLoginForm = new JFrame();
+		frmLoginForm.getContentPane().setBackground(new Color(240, 240, 240));
+		frmLoginForm.setTitle("Hukuk Burosu Otomasyonu v 1.0 - Login Form");
+		frmLoginForm.setBounds(100, 100, 776, 309);
+		frmLoginForm.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+		
+		frmLoginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton btnNewButton = new JButton("Baglan...");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(314, 152, 425, 40);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					//MY SQL BAGLANTI
+					try
+					{
+						baglanti.yap();
+					
+						Connection myconn=DriverManager.getConnection ("jdbc:mysql://"+databasetext.getText()+"/hukukburosu?useTimezone=true&serverTimezone=UTC","root","");
+						System.out.println("Baðlantý Saðlandý");
+						
+						String kullaniciadi = textField1.getText();
+				        String sifre = String.valueOf(passwordField.getPassword());
+				        
+						String query1="Select * From kullanicibilgi where kadi='"+kullaniciadi+"' and sifresi='"+sifre+"' ";
+						Statement stmt1=myconn.createStatement();
+						ResultSet rs1=stmt1.executeQuery(query1);
+						int a=0;
+						String b="";
+						String c="";
+						while(rs1.next())
+						{
+						b=rs1.getString("kaciklama");
+						
+					    System.out.println("Sisteme Baþarý ile Login Olundu..");
+						System.out.println("kadi:"+rs1.getString("kadi")+"sifresi"+rs1.getString("sifresi")+"Aciklama : " + rs1.getString("kaciklama")+"Yetki : " + rs1.getString("yetki"));
+						c=rs1.getString("yetki");
+						baglanti.yetki=rs1.getString("yetki");
+						a=a+1;
+						}
+						if (a>=1) {
+						AnaMenu frame = new AnaMenu();
+						frame.setVisible(true);
+						
+						JLabel label2 = new JLabel("");
+						label2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+						label2.setBounds(220, 560, 200, 37);
+						frame.contentPane.add(label2);
+						label2.setText(b);
+
+						JLabel label3 = new JLabel("");
+						label3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+						label3.setBounds(650, 560, 250, 37);
+						frame.contentPane.add(label3);
+						label3.setText(c);
+						frmLoginForm.setVisible(false);
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Hatali Giris...!", "Hukuk Burosu CMF", JOptionPane.PLAIN_MESSAGE);
+						}
+
+					
+					}catch(Exception hata)
+					{
+					System.err.println(hata.getMessage());
+					//throw new Exception("Deneme123");
+					}
+				
+			}
+		});
+		frmLoginForm.getContentPane().setLayout(null);
+		frmLoginForm.getContentPane().add(btnNewButton);
+		
+		textField1 = new JTextField();
+		textField1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textField1.setBounds(452, 42, 287, 20);
+		frmLoginForm.getContentPane().add(textField1);
+		textField1.setColumns(10);
+		
+		 
+		
+		JLabel lblNewLabel = new JLabel("Kullanici Adiniz :");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(314, 42, 129, 14);
+		frmLoginForm.getContentPane().add(lblNewLabel);
+		
+		JLabel lblSifrenizZ = new JLabel("Sifreniz  :");
+		lblSifrenizZ.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblSifrenizZ.setBounds(314, 72, 129, 14);
+		frmLoginForm.getContentPane().add(lblSifrenizZ);
+		
+	
+		
+		
+		JLabel Logo = new JLabel("");
+		Logo.setHorizontalAlignment(SwingConstants.CENTER);
+		Logo.setOpaque(true);
+		Logo.setBackground(Color.WHITE);
+		Image  img=new ImageIcon(this.getClass().getResource("/justice-balance-icon (1).png")).getImage();//LOGO DOSYASYI CEKILIYOR
+		frmLoginForm.getContentPane().add(Logo);
+		Logo.setIcon(new ImageIcon(img));
+		Logo.setBounds(10, 10, 287, 249);
+
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(314, 238, 425, 21);
+		frmLoginForm.getContentPane().add(progressBar);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(452, 72, 287, 20);
+		frmLoginForm.getContentPane().add(passwordField);
+		
+		JLabel lblDatabaseSeimi = new JLabel("Server Adi / IP :");
+		lblDatabaseSeimi.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDatabaseSeimi.setBounds(314, 102, 129, 14);
+		frmLoginForm.getContentPane().add(lblDatabaseSeimi);
+		
+		databasetext = new JTextField();
+		databasetext.setHorizontalAlignment(SwingConstants.LEFT);
+		databasetext.setText("localhost:3306");
+		databasetext.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		databasetext.setColumns(10);
+		databasetext.setBounds(452, 102, 287, 20);
+		frmLoginForm.getContentPane().add(databasetext);
+		
+		JButton btnNewButton_1 = new JButton("Sifremi Unuttum ?");
+		btnNewButton_1.setBounds(314, 204, 190, 23);
+		frmLoginForm.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Hakkimizda !");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				programhakkinda frame = new programhakkinda();
+				frame.show();
+				frame.setLocationRelativeTo(null); //FORMU MERKEZE ALIYOR
+			}
+		});
+		btnNewButton_1_1.setBounds(549, 203, 190, 23);
+		frmLoginForm.getContentPane().add(btnNewButton_1_1);
+		
+	}
+}

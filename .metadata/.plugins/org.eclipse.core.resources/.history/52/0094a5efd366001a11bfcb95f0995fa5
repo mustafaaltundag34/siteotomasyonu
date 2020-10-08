@@ -1,0 +1,113 @@
+package hukukcmftasarim;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+
+public class Anaform_Avukat extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Anaform_Avukat frame = new Anaform_Avukat();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Anaform_Avukat() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 657, 329);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblresim = new JLabel("");
+		lblresim.setOpaque(true);
+		lblresim.setBackground(Color.WHITE);
+		Image img= new ImageIcon(this.getClass().getResource("/auction-hammer-icon (1).png")).getImage();
+		lblresim.setIcon(new ImageIcon(img));
+		lblresim.setBounds(0, 0, 271, 290);
+		contentPane.add(lblresim);
+		
+		JButton btnmuvekkilislemleri = new JButton("M\u00FCvekkil \u0130\u015Flemleri");
+		btnmuvekkilislemleri.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnmuvekkilislemleri.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnmuvekkilislemleri.setBounds(281, 83, 150, 34);
+		contentPane.add(btnmuvekkilislemleri);
+		
+		JButton btndavahareketleri = new JButton("Dava Hareketleri");
+		btndavahareketleri.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btndavahareketleri.setBounds(462, 83, 150, 34);
+		contentPane.add(btndavahareketleri);
+		
+		JLabel lblNewLabel_Avukattext = new JLabel("AVUKAT MEN\u00DCS\u00DC");
+		lblNewLabel_Avukattext.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_Avukattext.setBounds(372, 11, 205, 34);
+		contentPane.add(lblNewLabel_Avukattext);
+		
+		JButton btnhukukihareket = new JButton("Hukuki Hareket");
+		btnhukukihareket.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnhukukihareket.setBounds(281, 185, 150, 34);
+		contentPane.add(btnhukukihareket);
+		
+		JButton btndavaliislemleri = new JButton("Daval\u0131 \u0130\u015Flemleri");
+		btndavaliislemleri.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btndavaliislemleri.setBounds(281, 135, 150, 34);
+		contentPane.add(btndavaliislemleri);
+		
+		JButton btnNewButton_7 = new JButton("Yard\u0131m");
+		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_7.setBounds(281, 233, 150, 34);
+		contentPane.add(btnNewButton_7);
+		
+		JButton btngorusmeislemleri = new JButton("G\u00F6r\u00FC\u015Fme \u0130\u015Flemleri");
+		btngorusmeislemleri.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btngorusmeislemleri.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btngorusmeislemleri.setBounds(462, 185, 150, 34);
+		contentPane.add(btngorusmeislemleri);
+		
+		JButton btnburoislemleri = new JButton("B\u00FCro \u0130\u015Flemleri");
+		btnburoislemleri.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnburoislemleri.setBounds(462, 135, 150, 34);
+		contentPane.add(btnburoislemleri);
+		
+		JButton btncikis = new JButton("\u00C7\u0131k\u0131\u015F");
+		btncikis.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btncikis.setBounds(462, 233, 150, 34);
+		contentPane.add(btncikis);
+	}
+
+}

@@ -1,0 +1,223 @@
+package test;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class avukatekleduzenle extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtTC;
+	private JTextField txtadi;
+	private JTextField txtsoyadi;
+	private JTextField txtdogumtarihi;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					avukatekleduzenle frame = new avukatekleduzenle();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public avukatekleduzenle() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 890, 446);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setOpaque(true);
+		Image img = new ImageIcon(this.getClass().getResource("/Law-icon.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBounds(10, 60, 138, 289);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Avukat Ekle / Duzenle Ekrani");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_1.setBounds(10, 11, 309, 29);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("TC No:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(158, 70, 55, 22);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Ad\u0131:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(158, 110, 46, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Soyad\u0131:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_4.setBounds(158, 150, 55, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Do\u011Fum Tarihi:");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_5.setBounds(158, 190, 91, 14);
+		contentPane.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Do\u011Fum Yeri: ");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_6.setBounds(158, 230, 91, 22);
+		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("Telefon:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_7.setBounds(503, 310, 79, 22);
+		contentPane.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("Baba Ad\u0131:");
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_8.setBounds(158, 270, 79, 14);
+		contentPane.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("Ana Ad\u0131:");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_9.setBounds(158, 310, 79, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_11 = new JLabel("Cinsiyet:");
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_11.setBounds(503, 70, 79, 14);
+		contentPane.add(lblNewLabel_11);
+		
+		JLabel lblNewLabel_12 = new JLabel("Sicil No:");
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_12.setBounds(503, 110, 79, 14);
+		contentPane.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("Baro:");
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_13.setBounds(503, 150, 79, 14);
+		contentPane.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("E-Posta:");
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_14.setBounds(503, 190, 79, 14);
+		contentPane.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_15 = new JLabel("Adres:");
+		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_15.setBounds(503, 230, 79, 14);
+		contentPane.add(lblNewLabel_15);
+		
+		txtTC = new JTextField();
+		txtTC.setBounds(263, 70, 144, 20);
+		contentPane.add(txtTC);
+		txtTC.setColumns(10);
+		
+		txtadi = new JTextField();
+		txtadi.setBounds(263, 110, 144, 20);
+		contentPane.add(txtadi);
+		txtadi.setColumns(10);
+		
+		txtsoyadi = new JTextField();
+		txtsoyadi.setBounds(263, 150, 144, 20);
+		contentPane.add(txtsoyadi);
+		txtsoyadi.setColumns(10);
+		
+		txtdogumtarihi = new JTextField();
+		txtdogumtarihi.setBounds(263, 190, 144, 20);
+		contentPane.add(txtdogumtarihi);
+		txtdogumtarihi.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(263, 230, 144, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(592, 310, 144, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(263, 270, 144, 20);
+		contentPane.add(textField_6);
+		textField_6.setColumns(10);
+		
+		textField_7 = new JTextField();
+		textField_7.setBounds(263, 310, 144, 20);
+		contentPane.add(textField_7);
+		textField_7.setColumns(10);
+		
+		textField_10 = new JTextField();
+		textField_10.setBounds(592, 110, 148, 20);
+		contentPane.add(textField_10);
+		textField_10.setColumns(10);
+		
+		textField_11 = new JTextField();
+		textField_11.setBounds(592, 150, 148, 20);
+		contentPane.add(textField_11);
+		textField_11.setColumns(10);
+		
+		textField_12 = new JTextField();
+		textField_12.setBounds(592, 190, 148, 20);
+		contentPane.add(textField_12);
+		textField_12.setColumns(10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"CINSIYET", "BAYAN", "BAY"}));
+		comboBox.setSelectedIndex(0);
+		comboBox.setBounds(592, 70, 144, 22);
+		contentPane.add(comboBox);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(592, 230, 148, 40);
+		contentPane.add(textArea);
+		
+		JButton btnNewButton = new JButton("Kaydet");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton.setBounds(158, 367, 126, 29);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_2 = new JButton("Vazge\u00E7");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_2.setBounds(294, 367, 126, 29);
+		contentPane.add(btnNewButton_2);
+	}
+}

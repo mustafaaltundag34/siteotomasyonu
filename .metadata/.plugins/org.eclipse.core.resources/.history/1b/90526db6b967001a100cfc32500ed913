@@ -1,0 +1,231 @@
+package hukukcmftasarim;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+
+public class buro_ekle_duzenle extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtTC;
+	private JTextField txtadi;
+	private JTextField textField_5;
+	private JTextField textField_1;
+	private JTextField textField;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					burobilgiekleduzenle frame = new burobilgiekleduzenle();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public buro_ekle_duzenle() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 926, 498);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(new Color(255, 153, 0));
+		lblNewLabel.setOpaque(true);
+		Image img = new ImageIcon(this.getClass().getResource("/office-women-pink-icon (1).png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
+		lblNewLabel.setBounds(0, 0, 226, 467);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("HUKUK\u0130 HAREKET EKLE/D\u00DCZENLE");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_1.setBounds(419, 27, 356, 29);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("B\u00FCro Unvan\u0131:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(315, 93, 111, 22);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Posta Kodu:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(315, 214, 111, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_7 = new JLabel("B\u00FCro \u0130l\u00E7e:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_7.setBounds(315, 175, 95, 22);
+		contentPane.add(lblNewLabel_7);
+		
+		txtTC = new JTextField();
+		txtTC.setBounds(436, 98, 144, 20);
+		contentPane.add(txtTC);
+		txtTC.setColumns(10);
+		
+		txtadi = new JTextField();
+		txtadi.setBounds(436, 134, 144, 20);
+		contentPane.add(txtadi);
+		txtadi.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(436, 212, 144, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("D\u00FCzenle");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_1.setBounds(603, 371, 89, 40);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Vazge\u00E7");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_2.setBounds(770, 371, 89, 40);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Ekle");
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_3.setBounds(436, 371, 89, 40);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("B\u00FCro Telefon:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(315, 301, 129, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_6 = new JLabel("B\u00FCro \u015Eehir:");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_6.setBounds(315, 136, 105, 14);
+		contentPane.add(lblNewLabel_6);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(436, 172, 144, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("B\u00FCro E-Posta:");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_1.setBounds(590, 93, 115, 22);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_2_2 = new JLabel("Vergi Dairesi:");
+		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_2.setBounds(590, 137, 115, 22);
+		contentPane.add(lblNewLabel_2_2);
+		
+		JLabel lblNewLabel_2_3 = new JLabel("Vergi No:");
+		lblNewLabel_2_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_3.setBounds(590, 175, 115, 22);
+		contentPane.add(lblNewLabel_2_3);
+		
+		JLabel lblNewLabel_2_4 = new JLabel("B\u00FCro Ortak 1:");
+		lblNewLabel_2_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_4.setBounds(590, 215, 115, 22);
+		contentPane.add(lblNewLabel_2_4);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(715, 95, 144, 20);
+		contentPane.add(textField);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(715, 134, 144, 20);
+		contentPane.add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(715, 172, 144, 20);
+		contentPane.add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(715, 212, 144, 20);
+		contentPane.add(textField_4);
+		
+		JLabel lblNewLabel_2_4_1 = new JLabel("B\u00FCro Ortak 2:");
+		lblNewLabel_2_4_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_4_1.setBounds(590, 248, 115, 22);
+		contentPane.add(lblNewLabel_2_4_1);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(715, 250, 144, 20);
+		contentPane.add(textField_6);
+		
+		JLabel lblNewLabel_4_2 = new JLabel("Adres:");
+		lblNewLabel_4_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4_2.setBounds(317, 242, 109, 14);
+		contentPane.add(lblNewLabel_4_2);
+		
+		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setBounds(436, 243, 144, 47);
+		contentPane.add(textArea_2);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(436, 300, 144, 20);
+		contentPane.add(textField_7);
+		
+		JLabel lblNewLabel_4_3 = new JLabel("B\u00FCro GSM:");
+		lblNewLabel_4_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4_3.setBounds(315, 331, 129, 14);
+		contentPane.add(lblNewLabel_4_3);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(436, 331, 144, 20);
+		contentPane.add(textField_8);
+		
+		JLabel lblNewLabel_2_4_1_1 = new JLabel("B\u00FCro Ortak 2:");
+		lblNewLabel_2_4_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_4_1_1.setBounds(590, 293, 115, 22);
+		contentPane.add(lblNewLabel_2_4_1_1);
+		
+		JLabel lblNewLabel_2_4_1_2 = new JLabel("B\u00FCro Ortak 2:");
+		lblNewLabel_2_4_1_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2_4_1_2.setBounds(590, 332, 115, 22);
+		contentPane.add(lblNewLabel_2_4_1_2);
+		
+		textField_9 = new JTextField();
+		textField_9.setColumns(10);
+		textField_9.setBounds(715, 295, 144, 20);
+		contentPane.add(textField_9);
+		
+		textField_10 = new JTextField();
+		textField_10.setColumns(10);
+		textField_10.setBounds(715, 340, 144, 20);
+		contentPane.add(textField_10);
+	}
+}
